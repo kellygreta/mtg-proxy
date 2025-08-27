@@ -1,0 +1,60 @@
+/* src/components/print.css - importante: importala in PrintView o index.css */
+
+/* regole per l'anteprima a schermo */
+.print-sheet {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  gap: 8px;
+  padding: 8px;
+}
+
+/* card visuale (non la card di gioco, ma il contenitore immagine) */
+.card-for-print {
+  position: relative;
+  width: 63mm;       /* larghezza carta MTG */
+  height: 88mm;      /* altezza carta MTG */
+  border: 0.5mm solid #333;
+  overflow: hidden;
+}
+.card-for-print img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* watermark visibile solo in stampa e anteprima */
+.card-for-print .watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-20deg);
+  font-size: 14mm;
+  font-weight: 700;
+  opacity: 0.35;
+  color: white;
+  text-shadow: 0 0 2px black;
+  pointer-events: none;
+}
+
+/* STYLES FOR PRINT */
+@media print {
+  body { -webkit-print-color-adjust: exact; color-adjust: exact; }
+  .no-print, button, textarea, .form-control, .btn { display: none !important; }
+
+  @page { size: A4; margin: 5mm; } /* o size: letter; per USA */
+  .print-sheet {
+    display: grid;
+    grid-template-columns: repeat(var(--cols), 1fr);
+    gap: 4mm;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  .card-for-print {
+    box-shadow: none;
+    border: 0.3mm solid #000;
+    /* evita che venga tagliata a metà */
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}

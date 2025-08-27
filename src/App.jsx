@@ -24,23 +24,21 @@ export default function App() {
   }
 
   return (
-    <div className="container py-4">
-      <div className=" text-center mb-3">
-        <h1 className="fw-bold m-0  display-6 ">✨ MTG: proxy print ✨</h1>
-      </div>
+    <div className="container py-4 text-center">
+      <h1 className="fw-bold display-6">✨ MTG: Proxy Print ✨</h1>
 
-      <div className="text-center mb-3">
+      <div className="mb-3">
         <label>Incolla una lista di nomi (uno per riga)</label>
-
         <textarea
-          className="form-control"
+          className="form-control mx-auto"
+          style={{ maxWidth: "600px" }}
           rows={6}
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
       </div>
 
-      <div className="d-flex gap-2 mb-3">
+      <div className="d-flex justify-content-evenly mb-3">
         <button className="btn btn-primary" onClick={handleLoad}>
           Carica carte
         </button>

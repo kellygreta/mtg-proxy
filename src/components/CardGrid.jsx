@@ -6,7 +6,7 @@ export default function CardGrid({ cards = [], onUpdateCard }) {
   return (
     <div className="row row-cols-2 row-cols-md-4 g-3">
       {cards.map((c, i) => {
-        const img = c.image_uris?.small || c.card_faces?.[0]?.image_uris?.small;
+        const img = c.image_uris?.large || c.card_faces?.[0]?.image_uris?.large;
         return (
           <div className="col" key={c.id}>
             <div className="card shadow-sm h-100">

@@ -14,6 +14,7 @@ export default function CardGrid({ cards = [], onUpdateCard }) {
               <div className="card-body">
                 <h6 className="card-title">{c.name}</h6>
                 <PrintingSelector
+                  key={c.id}
                   card={c}
                   onChange={(newPrint) => onUpdateCard(i, newPrint)}
                 />

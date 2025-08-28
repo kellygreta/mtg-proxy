@@ -1,47 +1,34 @@
-// src/App.jsx
 import { useState } from "react";
 import { fetchCardsByNames } from "./api/scryfall";
 import PrintView from "./components/PrintView";
 import CardGrid from "./components/CardGrid";
+import DeckImporter from "./components/DeckImporter";
 
 export default function App() {
-  const [input, setInput] = useState("");
   const [cards, setCards] = useState([]);
   const [layout, setLayout] = useState("3x3"); // default
 
-  async function handleLoad() {
-    const names = input
-      .split("\n")
-      .map((s) => s.trim())
-      .filter(Boolean);
-    if (!names.length) return;
+  async function handleImport(parsedList) {
     try {
-      const data = await fetchCardsByNames(names);
+      const data = await fetchCardsByNames(parsedList);
       setCards(data);
     } catch (e) {
       alert(e.message);
     }
   }
+  // 1 Sol Ring (CM2) 217
+  // 3 Swamp (J25) 89
+  // 2 Lightning Bolt
+  // 4 Forest
 
   return (
     <div className="container py-4 text-center">
       <h1 className="fw-bold display-6">✨ MTG: Proxy Print ✨</h1>
 
-      <div className="mb-3">
-        <label>Incolla una lista di nomi (uno per riga)</label>
-        <textarea
-          className="form-control mx-auto"
-          style={{ maxWidth: "600px" }}
-          rows={6}
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-        />
-      </div>
+      {/* Componente per importare liste */}
+      <DeckImporter onImport={handleImport} />
 
       <div className="d-flex justify-content-evenly mb-3">
-        <button className="btn btn-primary" onClick={handleLoad}>
-          Carica carte
-        </button>
         <select
           className="form-select w-auto"
           value={layout}

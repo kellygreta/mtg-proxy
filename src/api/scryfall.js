@@ -1,6 +1,16 @@
 export async function fetchCardsByNames(names = []) {
   // names = ["Black Lotus", "Liliana of the Veil", ...]
-  const identifiers = names.map(n => ({ name: n }));
+  const identifiers = names.map(
+    (item) => {
+    if (item.set && item.collector) {
+      return {
+        set: item.set.toLowerCase(),
+        collector_number: String(item.collector),
+      };
+    }
+    return { name: item.name };
+  }
+  );
   const res = await fetch('https://api.scryfall.com/cards/collection', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

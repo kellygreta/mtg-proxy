@@ -1,12 +1,17 @@
-# React + Vite
+# ✨ Magic: The Gathering – Proxy Printer ✨
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Progetto realizzato per esercitarmi con **React** e **Vite**, ho deciso di sviluppare una web app che permette di creare e stampare proxy per i propri mazzi di **Magic: The Gathering**, utilizzando le API pubbliche di **Scryfall** e **Bootstrap CSS**.
 
-Currently, two official plugins are available:
+## 🚀 Funzionalità
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Inserisci una lista di carte (anche in formato **MTG Arena** come `3 Swamp (J25) 89`).
+- Recupera automaticamente le immagini tramite **Scryfall API**.
+- Possibilità di scegliere la **stampa/edizione** preferita di ogni carta.
+- Visualizza un’**anteprima di stampa** con layout selezionabile (es. 3x3 o 3x4 carte per pagina).
+- Stampa diretta dal browser delle tue **proxy personalizzate**.
 
-## Expanding the ESLint configuration
+## 🛠️ Tecnologie
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React + Vite
+- Bootstrap 5
+- Scryfall API

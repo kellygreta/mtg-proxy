@@ -11,7 +11,13 @@ export default function App() {
   async function handleImport(parsedList) {
     try {
       const data = await fetchCardsByNames(parsedList);
-      setCards(data);
+      // 🔑 Rimappiamo mantenendo un uuid univoco per ogni copia
+      const withUUID = data.map((card, i) => ({
+        ...card,
+        uuid: crypto.randomUUID(), // garantisce sempre unicità
+      }));
+
+      setCards(withUUID);
     } catch (e) {
       alert(e.message);
     }

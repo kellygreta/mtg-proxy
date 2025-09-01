@@ -1,6 +1,9 @@
-// src/components/PrintingSelector.jsx
 import { useEffect, useState } from "react";
 
+// Componente che permette di scegliere tra le diverse versioni di stampa di una carta
+// Props:
+// - card: la carta da cui partire (contiene almeno un id e un `prints_search_uri`)
+// - onChange: callback per avvisare il parent quando l'utente seleziona una stampa diversa
 export default function PrintingSelector({ card, onChange }) {
   const [prints, setPrints] = useState([]);
   const [selectedId, setSelectedId] = useState(card.id);

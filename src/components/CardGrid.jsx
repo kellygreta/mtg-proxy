@@ -1,5 +1,8 @@
 import PrintingSelector from "./PrintingSelector";
 
+// Componente che riceve:
+// - card: array di carte (recuperate da Scryfall)
+// - onUpdateCard: callback per aggiornare la carta scelta (quando si cambia stampa)
 export default function CardGrid({ cards = [], onUpdateCard }) {
   if (!cards.length) return <p>Nessuna carta caricata.</p>;
 

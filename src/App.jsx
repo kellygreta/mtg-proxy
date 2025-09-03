@@ -57,7 +57,6 @@ export default function App() {
         {/* Componente per importare liste */}
         <DeckImporter onImport={handleImport} />
 
-        <hr />
         <SettingsBar
           settings={settings}
           setSettings={setSettings}

@@ -1,29 +1,20 @@
 /* src/components/print.css */
 
-/* wrapper per centrare tutto su A4 */
-.print-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* foglio di stampa */
+/* griglia principale */
 .print-sheet {
   display: grid;
-  grid-template-columns: repeat(var(--cols), 63mm); /* 63mm = larghezza carta */
-  gap: 4mm; /* spaziatura costante tra le carte */
+  grid-template-columns: repeat(var(--cols), calc(63mm * var(--scale, 1)));
+  gap: calc(var(--gap, 4) * 1mm);
   margin: auto;
-  padding: 0;
 }
 
-/* contenitore singola carta */
+/* singola carta */
 .card-for-print {
   position: relative;
-  width: 63mm;   /* dimensioni reali carta Magic */
-  height: 88mm;
+  width: calc(63mm * var(--scale, 1));
+  height: calc(88mm * var(--scale, 1));
   border: 0.3mm solid #000;
   overflow: hidden;
-  page-break-inside: avoid;
   break-inside: avoid;
 }
 .card-for-print img {
@@ -32,62 +23,41 @@
   object-fit: cover;
 }
 
-/* watermark */
+/* watermark opzionale */
 .card-for-print .watermark {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(-20deg);
-  font-size: 14mm;
-  font-weight: 700;
+  font: 700 14mm/1 sans-serif;
   opacity: 0.35;
-  color: white;
-  text-shadow: 0 0 2px black;
+  color: #fff;
+  text-shadow: 0 0 2px #000;
   pointer-events: none;
 }
 
-/* STILI DI STAMPA */
+/* modalità stampa */
 @media print {
-  body { 
-    -webkit-print-color-adjust: exact; 
-    print-color-adjust: exact; 
-    background: white !important;
-  }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; background: #fff !important; }
 
-  /* nascondiamo tutto ciò che non è l’area di stampa */
-  .no-print,
-  button,
-  textarea,
-  .form-control,
-  .btn,
-  h1,
-  h2,
-  hr,
-  .container {
+  /* nascondi UI */
+  .no-print, button, textarea, .form-control, .btn, h1, h2, hr, .container {
     display: none !important;
   }
 
-  @page { 
-    size: A4 portrait; 
-    margin: 5mm; 
-  }
+  @page { size: A4 portrait; margin: 5mm; }
 
-  .print-wrapper {
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-  }
+  .card-for-print { box-shadow: none; }
+  .black-corners .card-for-print { border: 0.5mm solid #000; }
 
-  .print-sheet {
-    margin: auto;
-    width: auto;
-    height: auto;
-    gap: 4mm;
-  }
-
-  .card-for-print {
-    border: 0.3mm solid #000;
-    box-shadow: none;
+  /* crop marks */
+  [data-crop="true"] .card-for-print::before {
+    content: "";
+    position: absolute;
+    top: -2mm; left: -2mm;
+    width: calc(100% + 4mm);
+    height: calc(100% + 4mm);
+    border: 0.2mm dashed #000;
+    pointer-events: none;
   }
 }

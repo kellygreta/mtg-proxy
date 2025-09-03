@@ -28,39 +28,41 @@ export default function App() {
   // 4 Forest
 
   return (
-    <div className="container py-4 text-center">
-      <h1 className="fw-bold display-6">✨ MTG: Proxy Print ✨</h1>
+    <>
+      <div className="container py-4 text-center">
+        <h1 className="fw-bold display-6">✨ MTG: Proxy Print ✨</h1>
 
-      {/* Componente per importare liste */}
-      <DeckImporter onImport={handleImport} />
+        {/* Componente per importare liste */}
+        <DeckImporter onImport={handleImport} />
 
-      <div className="d-flex justify-content-evenly mb-3">
-        <select
-          className="form-select w-auto"
-          value={layout}
-          onChange={(e) => setLayout(e.target.value)}
-        >
-          <option value="3x3">3x3 (9 per pagina, A4)</option>
-          <option value="3x4">3x4 (12 per pagina)</option>
-        </select>
-        <button className="btn btn-success" onClick={() => window.print()}>
-          Stampa
-        </button>
+        <div className="d-flex justify-content-evenly mb-3">
+          <select
+            className="form-select w-auto"
+            value={layout}
+            onChange={(e) => setLayout(e.target.value)}
+          >
+            <option value="3x3">3x3 (9 per pagina, A4)</option>
+            <option value="3x4">3x4 (12 per pagina)</option>
+          </select>
+          <button className="btn btn-success" onClick={() => window.print()}>
+            Stampa
+          </button>
+        </div>
+
+        <CardGrid
+          cards={cards}
+          onUpdateCard={(index, newPrint) => {
+            setCards((prev) => {
+              const updated = [...prev];
+              updated[index] = newPrint;
+              return updated;
+            });
+          }}
+        />
+        <hr />
       </div>
-
-      <CardGrid
-        cards={cards}
-        onUpdateCard={(index, newPrint) => {
-          setCards((prev) => {
-            const updated = [...prev];
-            updated[index] = newPrint;
-            return updated;
-          });
-        }}
-      />
-      <hr />
       <h2 className="no-print">Anteprima fogli di stampa</h2>
       <PrintView cards={cards} layout={layout} />
-    </div>
+    </>
   );
 }

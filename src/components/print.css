@@ -6,6 +6,7 @@
   grid-template-columns: repeat(var(--cols), calc(63mm * var(--scale, 1)));
   gap: calc(var(--gap, 4) * 1mm);
   margin: auto;
+  justify-content: center; /* centra le carte */
 }
 
 /* singola carta */
@@ -23,33 +24,30 @@
   object-fit: cover;
 }
 
-/* watermark opzionale */
-.card-for-print .watermark {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-20deg);
-  font: 700 14mm/1 sans-serif;
-  opacity: 0.35;
-  color: #fff;
-  text-shadow: 0 0 2px #000;
-  pointer-events: none;
-}
-
 /* modalità stampa */
 @media print {
-  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; background: #fff !important; }
+  body { 
+    -webkit-print-color-adjust: exact; 
+    print-color-adjust: exact; 
+    background: #fff !important; 
+  }
 
   /* nascondi UI */
   .no-print, button, textarea, .form-control, .btn, h1, h2, hr, .container {
     display: none !important;
   }
-
+  /* TODO NOT WORKING */
   @page { size: A4 portrait; margin: 5mm; }
 
+  /* TODO NOT WORKING */
   .card-for-print { box-shadow: none; }
-  .black-corners .card-for-print { border: 0.5mm solid #000; }
+  
+  /* TODO NOT WORKING */
+  .black-corners .card-for-print{
+    background: black !important;
+  }
 
+    /* TODO NOT WORKING */
   /* crop marks */
   [data-crop="true"] .card-for-print::before {
     content: "";

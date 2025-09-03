@@ -44,7 +44,7 @@ const PrintView = forwardRef(
         >
           Anteprima fogli di stampa
         </h2>
-        <div className="print-sheet">
+        <div className="print-sheet d-flex flex-wrap justify-content-center">
           {visibleCards.map((c, i) => {
             const img =
               c.image_uris?.normal || c.card_faces?.[0]?.image_uris?.normal;

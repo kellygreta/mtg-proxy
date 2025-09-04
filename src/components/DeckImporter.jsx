@@ -58,6 +58,7 @@ export default function DeckImporter({ onImport }) {
         rows={6}
         value={text}
         onChange={(e) => setText(e.target.value)}
+        placeholder={`1 Sol Ring (CM2) 217 \n3 Swamp (J25) 89 \n2 Lightning Bolt \n4 Forest`}
       />
       <button className="btn btn-primary mt-2" onClick={handleImport}>
         Importa

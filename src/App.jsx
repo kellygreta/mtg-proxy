@@ -44,10 +44,6 @@ export default function App() {
       alert(e.message);
     }
   }
-  // 1 Sol Ring (CM2) 217
-  // 3 Swamp (J25) 89
-  // 2 Lightning Bolt
-  // 4 Forest
 
   return (
     <>

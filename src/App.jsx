@@ -70,20 +70,24 @@ export default function App() {
             });
           }}
         />
-        <hr />
       </div>
-      <PrintView
-        ref={printRef}
-        cards={cards}
-        layout={settings.layout}
-        cropMarks={settings.cropMarks}
-        skipBasicLands={settings.skipBasicLands}
-        blackCorners={settings.blackCorners}
-        //playtestWatermark={playtestWatermark}
-        paperSize={settings.paperSize}
-        gap={settings.gap}
-        scale={settings.scale}
-      />
+      {cards.length > 0 && (
+        <>
+          <hr />
+          <PrintView
+            ref={printRef}
+            cards={cards}
+            layout={settings.layout}
+            cropMarks={settings.cropMarks}
+            skipBasicLands={settings.skipBasicLands}
+            blackCorners={settings.blackCorners}
+            //playtestWatermark={playtestWatermark}
+            paperSize={settings.paperSize}
+            gap={settings.gap}
+            scale={settings.scale}
+          />
+        </>
+      )}
     </>
   );
 }

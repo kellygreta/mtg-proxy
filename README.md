@@ -15,3 +15,7 @@ Progetto realizzato per esercitarmi con **React** e **Vite**, ho deciso di svilu
 - React + Vite
 - Bootstrap 5
 - Scryfall API
+
+---
+
+<sub> This project is unofficial Fan Content permitted under the Fan Content Policy. Not approved/endorsed by Wizards. Portions of the materials used are property of Wizards of the Coast. ©Wizards of the Coast LLC. </sub>
